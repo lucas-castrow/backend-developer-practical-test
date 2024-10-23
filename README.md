@@ -11,7 +11,14 @@ After your environment is working, run the following code to install the depende
 ```bash
 composer install
 ```
-### 2. Run docker containers
+
+### 2. Environment variables
+
+The .env example file is the same to use as default .env, so there's no need to make changes in this file. you can simply type
+```bash
+cp .env.example .env
+```
+### 3. Run docker containers
 
 This project uses a simple postgresql database that could be started using docker compose.
 Type the following line to execute the containers:
@@ -19,7 +26,7 @@ Type the following line to execute the containers:
 docker compose up -d
 ```
 
-### 3. Execute migrations and run the project
+### 4. Execute migrations and run the project
 
 To execute the migrations to populate database type the following:
 ```bash
@@ -30,6 +37,24 @@ After migrations executed you can run the project with
 ```bash
 >php artisan serve
 ```
+
+### 5. Run monitor and work queue
+
+To make requests in time to api to know providers health status is need to execute the jobs.
+To do that you can run
+```bash
+php artisan app:monitor-rpc-provider-states
+```
+and
+
+```bash
+php artisan queue:work
+```
+After migrations executed you can run the project with
+```bash
+>php artisan serve
+```
+
 Now you can run the project to test all API endpoints.
 
 ###Notes
