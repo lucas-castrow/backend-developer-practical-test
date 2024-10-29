@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Jobs\MonitorRpcProviderState;
+use App\Jobs\MonitorRpcProviderStateJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Log;
@@ -11,9 +11,8 @@ class Kernel extends ConsoleKernel
 {
 	protected function schedule(Schedule $schedule)
 	{
-		// $schedule->command('app:monitor-rpc-provider-states')->everyMinute();
-		Log::info('MonitorRpcProviderState job foi agendado');
-		$schedule->job(new MonitorRpcProviderState)->everyMinute();
+		Log::info('MonitorRpcProviderState job scheduled');
+		$schedule->job(new MonitorRpcProviderStateJob())->everyMinute();
 	}
 
 	protected function commands(): void
