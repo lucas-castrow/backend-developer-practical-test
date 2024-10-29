@@ -11,19 +11,12 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
 
-class MonitorRpcProviderState implements ShouldQueue
+class MonitorRpcProviderStateJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected RpcProvider $rpcProvider;
 
-    /**
-     * Create a new job instance.
-     */
-    public function __construct()
-    {
-        // $this->rpcProvider = $rpcProvider;
-    }
 
     /**
      * Execute the job.
