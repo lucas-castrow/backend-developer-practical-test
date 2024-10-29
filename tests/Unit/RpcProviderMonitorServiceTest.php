@@ -22,6 +22,7 @@ class RpcProviderMonitorServiceTest extends TestCase
 	{
 		parent::setUp();
 		$clientMock = Mockery::mock(Client::class);
+		/** @var mixed $clientMock */
 		$this->rpcProviderMonitorService = new RpcProviderMonitorService($clientMock);
 	}
 
@@ -48,7 +49,7 @@ class RpcProviderMonitorServiceTest extends TestCase
 		$expectedLatency = 0;
 
 		//act
-		$this->rpcProviderMonitorService->monitor($rpcProvider);
+		$this->rpcProviderMonitorService->monitor();
 
 		//assert
 		$this->assertDatabaseHas('rpc_provider_state', [
@@ -76,7 +77,7 @@ class RpcProviderMonitorServiceTest extends TestCase
 		$expectedLatency = 0;
 
 		//act
-		$this->rpcProviderMonitorService->monitor($rpcProvider);
+		$this->rpcProviderMonitorService->monitor();
 
 		// assert
 		$this->assertDatabaseHas('rpc_provider_state', [
