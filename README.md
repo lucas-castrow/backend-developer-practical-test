@@ -40,28 +40,31 @@ After migrations executed you can run the project with
 
 ### 5. Run monitor and work queue
 
-To make requests in time to api to know providers health status is need to execute the jobs.
-To do that you can run
+To make requests in time to api to know providers health status is need to execute.
 ```bash
-php artisan app:monitor-rpc-provider-states
+php artisan schedule:work
 ```
-and
+and execute the jobs that was added to queue
 
 ```bash
 php artisan queue:work
 ```
-After migrations executed you can run the project with
-```bash
->php artisan serve
-```
 
 Now you can run the project to test all API endpoints.
 
-###Notes
+
+### Tests
+
+To execute the implemented tests you can run:
+
+```bash
+php artisan test
+```
+### Notes
 
 ### The provider health status is represented by an integer constant where
-### OFFLINE = 0
-### ONLINE = 1
+**OFFLINE** = 0
+**ONLINE** = 1
 
 ## Endpoints
 
@@ -110,7 +113,7 @@ Remove provider from monitored list by id
 ### 4. Get Providers list
 
 **Endpoint:**  
-`GET /api/provider?status={status_filter}&chain_id={value}`
+`GET /api/provider?status={status_value}&chain_id={chain_value}`
 
 **Description:**  
 Returns monitored providers using filter query by status and chain_id.
